@@ -13,6 +13,7 @@ class WeatherScreen extends StatefulWidget {
 
   String formattedDate =
       DateFormat('EEEE, d, MMMM, h:mm a').format(DateTime.now());
+  String day = DateFormat('a').format(DateTime.now());
 
   @override
   State<WeatherScreen> createState() => _MyHomePageState();
@@ -46,6 +47,22 @@ class _MyHomePageState extends State<WeatherScreen> {
 
   @override
   Widget build(BuildContext context) {
+    //Change icon depending on the weather description
+    final String desp = widget.weather['weather'][0]['description'];
+    late String icon;
+    if (desp.contains('clouds')) {
+      icon = 'clouds';
+    } else if (desp.contains('clear') && widget.day == 'AM') {
+      icon = 'clearlight';
+    } else if (desp.contains('clear') && widget.day == 'PM') {
+      icon = 'clearnight';
+    } else if (desp.contains('rain')) {
+      icon = 'rain';
+    } else if (desp.contains('wind')) {
+      icon = 'wind';
+    } else if (desp.contains('snow')) {
+      icon = 'snow';
+    }
     return Scaffold(
       drawer: Drawer(
         child: Container(
@@ -332,9 +349,9 @@ class _MyHomePageState extends State<WeatherScreen> {
                       children: [
                         Positioned(
                             top: -75,
-                            left: 0,
+                            left: 10,
                             child: Image.asset(
-                              iconState[1]["image"],
+                              iconState[0][icon],
                               height: 205,
                               width: 205,
                             )),
