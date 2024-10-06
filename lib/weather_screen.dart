@@ -462,7 +462,7 @@ class _MyHomePageState extends State<WeatherScreen> {
                                   style: TextStyle(
                                       color: Colors.grey[200], fontSize: 16)),
                               Text(
-                                  '${(widget.weather['main']['feels_like']).toInt()}° ',
+                                  '${(widget.weather['main']['feels_like']).toInt()}°',
                                   style: TextStyle(
                                       color: Colors.grey[200], fontSize: 15)),
                             ],

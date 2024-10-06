@@ -17,7 +17,7 @@ class _WeatherInfoState extends State<WeatherInfo> {
   void initState() {
     super.initState();
     //The lat/lon location here (Cairo)
-    _weatherData = weatherService.fetchWeatherData(45.6081, 6.8365);
+    _weatherData = weatherService.fetchWeatherData(30.033, 31.233);
   }
 
   @override
