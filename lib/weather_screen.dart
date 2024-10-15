@@ -8,8 +8,14 @@ import 'package:weather_forecasting/services/weather_service.dart';
 
 class WeatherScreen extends StatefulWidget {
   final Map<String, dynamic> weather;
+  double latitude;
+  double longitude;
 
-  WeatherScreen({super.key, required this.weather});
+  WeatherScreen(
+      {super.key,
+      required this.weather,
+      required this.latitude,
+      required this.longitude});
 
   String formattedDate =
       DateFormat('EEEE, d, MMMM, h:mm a').format(DateTime.now());
@@ -32,7 +38,7 @@ class _MyHomePageState extends State<WeatherScreen> {
 
   Future<void> _loadForecastData() async {
     final data = await weatherService.fetchFiveDayForecast(
-        45.6081, 6.8365); // Cairo's lat/lon
+        widget.latitude, widget.longitude); // Cairo's lat/lon
     setState(() {
       forecastData = data;
     });
@@ -419,7 +425,8 @@ class _MyHomePageState extends State<WeatherScreen> {
                           ),
                         ),
                         Container(
-                          margin: const EdgeInsets.only(top: 190, left: 10),
+                          margin: const EdgeInsets.only(
+                              top: 190, left: 5, right: 5),
                           width: 400,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 18, vertical: 6),
@@ -428,18 +435,18 @@ class _MyHomePageState extends State<WeatherScreen> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30))),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Image.asset(
                                 "assets/images/temperature (1).png",
                                 height: 34,
                                 width: 35,
                               ),
-                              Text('Max : ',
+                              Text('Max: ',
                                   style: TextStyle(
                                       color: Colors.grey[200], fontSize: 16)),
                               Text(
-                                  '${(widget.weather['main']['temp_max']).toInt()}°     ',
+                                  '${(widget.weather['main']['temp_max']).toInt()}° ',
                                   style: TextStyle(
                                       color: Colors.grey[200], fontSize: 16)),
 
@@ -451,14 +458,14 @@ class _MyHomePageState extends State<WeatherScreen> {
                                 height: 34,
                                 width: 35,
                               ),
-                              Text('Min :  ',
+                              Text('Min: ',
                                   style: TextStyle(
                                       color: Colors.grey[200], fontSize: 16)),
                               Text(
-                                  '${(widget.weather['main']['temp_min']).toInt()}°',
+                                  '${(widget.weather['main']['temp_min']).toInt()}° ',
                                   style: TextStyle(
                                       color: Colors.grey[200], fontSize: 16)),
-                              Text('         Feels like ',
+                              Text('Feels like: ',
                                   style: TextStyle(
                                       color: Colors.grey[200], fontSize: 16)),
                               Text(
@@ -600,13 +607,13 @@ class _MyHomePageState extends State<WeatherScreen> {
           ),
         ),
         title: Text(
-          '   $formattedDate',
+          '  $formattedDate',
           style: const TextStyle(
             color: Colors.white,
           ),
         ),
         subtitle: Text(
-          '   Temp: $temp°C | $description',
+          '  Temp: $temp°C | $description',
           style: const TextStyle(
             color: Colors.white,
           ),
