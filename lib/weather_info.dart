@@ -12,8 +12,8 @@ class WeatherInfo extends StatefulWidget {
 }
 
 class _WeatherInfoState extends State<WeatherInfo> {
-  final WeatherService weatherService = WeatherService();
   final LocationService locationService = LocationService();
+  final WeatherService weatherService = WeatherService();
   Future<Map<String, dynamic>?>? _weatherData; // Use nullable type for future
   late double lat;
   late double long;

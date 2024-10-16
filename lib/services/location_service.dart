@@ -18,7 +18,8 @@ class LocationService {
       }
 
       Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
+          // ignore: deprecated_member_use
+          desiredAccuracy: LocationAccuracy.bestForNavigation);
 
       // Update the static latitude and longitude variables
       latitude = position.latitude;

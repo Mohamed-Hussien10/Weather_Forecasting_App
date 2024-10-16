@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_forecasting/components/small_container_state.dart';
+import 'package:weather_forecasting/components/weather_search.dart';
 import 'package:weather_forecasting/list_icon_state.dart';
 import 'package:weather_forecasting/services/weather_service.dart';
 
@@ -20,6 +21,7 @@ class WeatherScreen extends StatefulWidget {
   String formattedDate =
       DateFormat('EEEE, d, MMMM, h:mm a').format(DateTime.now());
   String day = DateFormat('a').format(DateTime.now());
+  double hour = DateFormat('h').format(DateTime.now()) as double;
 
   @override
   State<WeatherScreen> createState() => _MyHomePageState();
@@ -58,7 +60,9 @@ class _MyHomePageState extends State<WeatherScreen> {
     late String icon;
     if (desp.contains('clouds')) {
       icon = 'clouds';
-    } else if (desp.contains('clear') && widget.day == 'AM') {
+    } else if (desp.contains('clear') && widget.day == 'AM' ||
+        widget.hour >= 1 ||
+        widget.hour <= 6) {
       icon = 'clearlight';
     } else if (desp.contains('clear') && widget.day == 'PM') {
       icon = 'clearnight';
@@ -313,10 +317,13 @@ class _MyHomePageState extends State<WeatherScreen> {
         backgroundColor: const Color(0xff352877), //black
         actions: [
           IconButton(
-              //لأعطاء اذن الدخول للموقع  geolocator
+              //search
               hoverColor: Colors.orange,
-              onPressed: () {},
-              icon: const Icon(Icons.location_on_outlined))
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SearchWeather()));
+              },
+              icon: const Icon(Icons.search))
         ],
       ),
       body: Stack(
