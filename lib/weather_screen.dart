@@ -21,7 +21,7 @@ class WeatherScreen extends StatefulWidget {
   String formattedDate =
       DateFormat('EEEE, d, MMMM, h:mm a').format(DateTime.now());
   String day = DateFormat('a').format(DateTime.now());
-  double hour = DateFormat('h').format(DateTime.now()) as double;
+  String hour = DateFormat('h').format(DateTime.now());
 
   @override
   State<WeatherScreen> createState() => _MyHomePageState();
@@ -61,8 +61,7 @@ class _MyHomePageState extends State<WeatherScreen> {
     if (desp.contains('clouds')) {
       icon = 'clouds';
     } else if (desp.contains('clear') && widget.day == 'AM' ||
-        widget.hour >= 1 ||
-        widget.hour <= 6) {
+        double.parse(widget.hour) >= 1 && double.parse(widget.hour) <= 6) {
       icon = 'clearlight';
     } else if (desp.contains('clear') && widget.day == 'PM') {
       icon = 'clearnight';
