@@ -11,9 +11,10 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreen extends State<SearchScreen> {
-  String day = DateFormat('a').format(DateTime.now());
   String formattedDate =
       DateFormat('EEEE, d, MMMM, h:mm a').format(DateTime.now());
+  String day = DateFormat('a').format(DateTime.now());
+  String hour = DateFormat('h').format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,8 @@ class _SearchScreen extends State<SearchScreen> {
     late String icon;
     if (desp.contains('clouds')) {
       icon = 'clouds';
-    } else if (desp.contains('clear') && day == 'AM') {
+    } else if (desp.contains('clear') && day == 'AM' ||
+        double.parse(hour) >= 1 && double.parse(hour) <= 6) {
       icon = 'clearlight';
     } else if (desp.contains('clear') && day == 'PM') {
       icon = 'clearnight';
