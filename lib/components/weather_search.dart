@@ -96,8 +96,17 @@ class _SearchWeather extends State<SearchWeather> {
             fit: BoxFit.cover,
           ),
           if (_isLoading) // Show loading indicator if loading
-            const Center(
-              child: CircularProgressIndicator(),
+            Center(
+              child: SizedBox(
+                width: 100,
+                height: 3,
+                child: LinearProgressIndicator(
+                  valueColor: const AlwaysStoppedAnimation<Color>(
+                      Colors.deepPurpleAccent), // Color of the indicator
+                  backgroundColor:
+                      Colors.grey[300], // Background color of the bar
+                ),
+              ),
             ),
           Positioned(
             top: 50,
