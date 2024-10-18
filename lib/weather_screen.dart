@@ -36,6 +36,7 @@ class _MyHomePageState extends State<WeatherScreen> {
   void initState() {
     super.initState();
     _loadForecastData();
+    _convertTemperature();
   }
 
   Future<void> _loadForecastData() async {
@@ -44,6 +45,22 @@ class _MyHomePageState extends State<WeatherScreen> {
     setState(() {
       forecastData = data;
     });
+  }
+// function convert Temperature by switch
+  bool _isCelsius = false;
+  String _result = "";
+  void _convertTemperature() {
+    double inputTemperature = (widget.weather['main']['temp']).toDouble();
+    if (_isCelsius) {
+      double fahrenheit = (inputTemperature * 9 / 5) + 32;
+      setState(() {
+        _result = fahrenheit.toStringAsFixed(1);
+      });
+    } else {
+      setState(() {
+        _result = '${inputTemperature.toInt()}';
+      });
+    }
   }
 
   //---------------End weather forcast-------------
@@ -73,235 +90,6 @@ class _MyHomePageState extends State<WeatherScreen> {
       icon = 'snow';
     }
     return Scaffold(
-      drawer: Drawer(
-        child: Container(
-          color: const Color(0xff363a77),
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Container(
-                  padding: const EdgeInsets.only(
-                      top: 30, left: 10, right: 10, bottom: 10),
-                  color: const Color(0xff071133),
-                  child: Row(
-                    children: [
-                      ClipOval(
-                        child: SizedBox(
-                          height: 75,
-                          width: 80,
-                          child: Image.asset("assets/images/p1.jpeg"),
-                        ),
-                      ),
-                      const Text(
-                        " Settings",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 40,
-                            color: Colors.white),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 5,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: ListView(
-                    children: [
-                      Row(
-                        //Temperature
-
-                        children: [
-                          const Expanded(
-                              child: Row(
-                            children: [
-                              Icon(
-                                Icons.thermostat_outlined,
-                                color: Colors.white,
-                                size: 25,
-                              ),
-                              Text('Temperature Unit',
-                                  style: TextStyle(color: Colors.white)),
-                            ],
-                          )),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text('  °C',
-                                    style: TextStyle(color: Colors.white)),
-                                Switch(
-                                  //switch button related to Celsius and Fahrenheit
-                                  activeColor: Colors.orange,
-
-                                  activeTrackColor: const Color(0xff292d4c),
-                                  inactiveTrackColor: const Color(0xff292d4c),
-                                  inactiveThumbColor: Colors.orange,
-                                  value: temperature,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      temperature = value;
-                                    });
-                                  },
-                                ),
-                                const Text('°F',
-                                    style: TextStyle(color: Colors.white)),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 10,
-                      ),
-                      const Divider(color: Colors.white),
-                      Container(
-                        height: 10,
-                      ),
-                      Row(
-                        //wind
-                        children: [
-                          const Expanded(
-                              child: Row(
-                            children: [
-                              Icon(
-                                Icons.air_outlined,
-                                color: Colors.white,
-                                size: 25,
-                              ),
-                              Text(' Wind Speed Unit',
-                                  style: TextStyle(color: Colors.white)),
-                            ],
-                          )),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text('  km/h',
-                                    style: TextStyle(color: Colors.white)),
-                                Switch(
-                                  //switch button related to Celsius and Fahrenheit
-                                  activeColor: Colors.orange,
-
-                                  activeTrackColor: const Color(0xff292d4c),
-                                  inactiveTrackColor: const Color(0xff292d4c),
-                                  inactiveThumbColor: Colors.orange,
-                                  value: wind,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      wind = value;
-                                    });
-                                  },
-                                ),
-                                const Text('m/h',
-                                    style: TextStyle(color: Colors.white)),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 10,
-                      ),
-                      const Divider(color: Colors.white),
-                      Container(
-                        height: 10,
-                      ),
-                      Row(
-                        //rain
-                        children: [
-                          const Expanded(
-                              child: Row(
-                            children: [
-                              Icon(
-                                Icons.cloud_outlined,
-                                color: Colors.white,
-                                size: 25,
-                              ),
-                              Text('  Rain Unit',
-                                  style: TextStyle(color: Colors.white)),
-                            ],
-                          )),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text('  mm',
-                                    style: TextStyle(color: Colors.white)),
-                                Switch(
-                                  //switch button related to Celsius and Fahrenheit
-                                  activeColor: Colors.orange,
-
-                                  activeTrackColor: const Color(0xff292d4c),
-                                  inactiveTrackColor: const Color(0xff292d4c),
-                                  inactiveThumbColor: Colors.orange,
-                                  value: rain,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      rain = value;
-                                    });
-                                  },
-                                ),
-                                const Text('in',
-                                    style: TextStyle(
-                                        color: Colors.white)), //in=inch
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 10,
-                      ),
-                      const Divider(
-                        color: Color(0xff342774),
-                        thickness: 2,
-                      ),
-                      Container(
-                        height: 18,
-                      ),
-                      Row(
-                        //Notifications
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Row(
-                            children: [
-                              Icon(
-                                Icons.notifications_none,
-                                color: Colors.white,
-                                size: 30,
-                              ),
-                              Text(' Notifications',
-                                  style: TextStyle(
-                                      fontSize: 25, color: Colors.white)),
-                            ],
-                          ),
-                          Switch(
-                            //switch button related to Celsius and Fahrenheit
-                            activeColor: Colors.orange,
-
-                            activeTrackColor: const Color(0xff292d4c),
-                            inactiveTrackColor: const Color(0xff292d4c),
-                            value: notification,
-                            onChanged: (value) {
-                              setState(() {
-                                notification = value;
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
       appBar: AppBar(
         iconTheme: const IconThemeData(
             color: Colors.white, size: 30 // Change the drawer icon color here
@@ -314,17 +102,42 @@ class _MyHomePageState extends State<WeatherScreen> {
           style: const TextStyle(color: Colors.white, fontSize: 30),
         )),
         backgroundColor: const Color(0xff352877), //black
+        leading:
+        IconButton(
+          //search
+            hoverColor: Colors.orange,
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const SearchWeather()));
+            },
+            icon: const Icon(Icons.search)),
         actions: [
-          IconButton(
-              //search
-              hoverColor: Colors.orange,
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const SearchWeather()));
-              },
-              icon: const Icon(Icons.search))
+        Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text('  °C',
+              style: TextStyle(color: Colors.white,fontSize: 15)),
+          Switch(
+            //switch button related to Celsius and Fahrenheit
+            activeColor: Colors.orange,
+            activeTrackColor: const Color(0xff292d4c),
+            inactiveTrackColor: const Color(0xff292d4c),
+            inactiveThumbColor: Colors.orange,
+            value: _isCelsius,
+            onChanged: (value) {
+              setState(() {
+                _isCelsius = value;
+                _convertTemperature();
+              });
+            },
+          ),
+          const Text('°F  ',
+              style: TextStyle(color: Colors.white,fontSize: 15)),
         ],
-      ),
+
+    ),
+      ]
+    ),
       body: Stack(
         children: [
           Positioned(
@@ -369,21 +182,22 @@ class _MyHomePageState extends State<WeatherScreen> {
                             )),
                         Positioned(
                             top: 25,
-                            right: 65,
+                            right: 56,
                             child: Text(
-                              "${(widget.weather['main']['temp']).toInt()}",
+                              // "${(widget.weather['main']['temp']).toInt()}",
+                              "$_result",
                               style: const TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 65),
+                                  fontSize: 62),
                             )),
-                        const Positioned(
+                        Positioned(
                           top: 35,
-                          right: 44,
-                          child: Text('°C',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                        ),
+                          right: 34,
+                          child:_isCelsius==false ?
+                          Text('°C',style:TextStyle(color: Colors.white, fontSize: 20)):
+                          Text('°F',style:TextStyle(color: Colors.white, fontSize: 20)),),
+
                         Positioned(
                           top: 105,
                           right: 38,
@@ -430,55 +244,56 @@ class _MyHomePageState extends State<WeatherScreen> {
                             ],
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(
-                              top: 190, left: 5, right: 5),
-                          width: 400,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 18, vertical: 6),
-                          decoration: const BoxDecoration(
-                              color: Color(0xff393c69),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30))),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Image.asset(
-                                "assets/images/temperature (1).png",
-                                height: 34,
-                                width: 35,
-                              ),
-                              Text('Max: ',
-                                  style: TextStyle(
-                                      color: Colors.grey[200], fontSize: 16)),
-                              Text(
-                                  '${(widget.weather['main']['temp_max']).toInt()}° ',
-                                  style: TextStyle(
-                                      color: Colors.grey[200], fontSize: 16)),
-
-                              // Container(
-                              //   width: 40,
-                              // ),
-                              Image.asset(
-                                "assets/images/temperature.png",
-                                height: 34,
-                                width: 35,
-                              ),
-                              Text('Min: ',
-                                  style: TextStyle(
-                                      color: Colors.grey[200], fontSize: 16)),
-                              Text(
-                                  '${(widget.weather['main']['temp_min']).toInt()}° ',
-                                  style: TextStyle(
-                                      color: Colors.grey[200], fontSize: 16)),
-                              Text('Feels like: ',
-                                  style: TextStyle(
-                                      color: Colors.grey[200], fontSize: 16)),
-                              Text(
-                                  '${(widget.weather['main']['feels_like']).toInt()}°',
-                                  style: TextStyle(
-                                      color: Colors.grey[200], fontSize: 15)),
-                            ],
+                        Expanded(
+                          child: Container(
+                            margin: const EdgeInsets.only(
+                                top: 190, left: 5, right: 5),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 18, vertical: 6),
+                            decoration: const BoxDecoration(
+                                color: Color(0xff393c69),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30))),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Image.asset(
+                                  "assets/images/temperature (1).png",
+                                  height: 34,
+                                  width: 35,
+                                ),
+                                Text('Max: ',
+                                    style: TextStyle(
+                                        color: Colors.grey[200], fontSize: 16)),
+                                Text(
+                                    '${(widget.weather['main']['temp_max']).toInt()}° ',
+                                    style: TextStyle(
+                                        color: Colors.grey[200], fontSize: 16)),
+                          
+                                // Container(
+                                //   width: 40,
+                                // ),
+                                Image.asset(
+                                  "assets/images/temperature.png",
+                                  height: 34,
+                                  width: 35,
+                                ),
+                                Text('Min: ',
+                                    style: TextStyle(
+                                        color: Colors.grey[200], fontSize: 16)),
+                                Text(
+                                    '${(widget.weather['main']['temp_min']).toInt()}° ',
+                                    style: TextStyle(
+                                        color: Colors.grey[200], fontSize: 16)),
+                                Text('Feels like: ',
+                                    style: TextStyle(
+                                        color: Colors.grey[200], fontSize: 16)),
+                                Text(
+                                    '${(widget.weather['main']['feels_like']).toInt()}°',
+                                    style: TextStyle(
+                                        color: Colors.grey[200], fontSize: 15)),
+                              ],
+                            ),
                           ),
                         ),
                       ],

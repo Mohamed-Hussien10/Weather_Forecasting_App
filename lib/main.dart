@@ -22,7 +22,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const WeatherInfo(),
-      theme: ThemeData(fontFamily: "AfacadFlux"),
+      theme: ThemeData(
+
+          fontFamily: "AfacadFlux",
+
+      ),
     );
   }
 }

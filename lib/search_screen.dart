@@ -18,6 +18,8 @@ class _SearchScreen extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+
     // Change icon depending on the weather description
     final String desp = widget.weather?['weather'][0]['description'] ?? '';
     late String icon;
@@ -43,6 +45,7 @@ class _SearchScreen extends State<SearchScreen> {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(
           color: Colors.grey.withOpacity(
@@ -151,51 +154,52 @@ class _SearchScreen extends State<SearchScreen> {
                               ],
                             ),
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(
-                                top: 190, left: 8, right: 8),
-                            width: 400,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18, vertical: 6),
-                            decoration: const BoxDecoration(
-                                color: Color(0xff393c69),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  "assets/images/temperature (1).png",
-                                  height: 34,
-                                  width: 34,
-                                ),
-                                Text('Max : ',
-                                    style: TextStyle(
-                                        color: Colors.grey[200], fontSize: 15)),
-                                Text(
-                                    '${(widget.weather?['main']['temp_max']).toInt()}°     ',
-                                    style: TextStyle(
-                                        color: Colors.grey[200], fontSize: 14)),
-                                Image.asset(
-                                  "assets/images/temperature.png",
-                                  height: 34,
-                                  width: 34,
-                                ),
-                                Text('Min :  ',
-                                    style: TextStyle(
-                                        color: Colors.grey[200], fontSize: 15)),
-                                Text(
-                                    '${(widget.weather?['main']['temp_min']).toInt()}°',
-                                    style: TextStyle(
-                                        color: Colors.grey[200], fontSize: 15)),
-                                Text('      Feels like ',
-                                    style: TextStyle(
-                                        color: Colors.grey[200], fontSize: 15)),
-                                Text(
-                                    '${(widget.weather?['main']['feels_like']).toInt()}°',
-                                    style: TextStyle(
-                                        color: Colors.grey[200], fontSize: 15)),
-                              ],
+                          Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.only(
+                                  top: 190, left: 8, right: 8),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 18, vertical: 6),
+                              decoration: const BoxDecoration(
+                                  color: Color(0xff393c69),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30))),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    "assets/images/temperature (1).png",
+                                    height: 34,
+                                    width: 34,
+                                  ),
+                                  Text('Max : ',
+                                      style: TextStyle(
+                                          color: Colors.grey[200], fontSize: 15)),
+                                  Text(
+                                      '${(widget.weather?['main']['temp_max']).toInt()}°     ',
+                                      style: TextStyle(
+                                          color: Colors.grey[200], fontSize: 14)),
+                                  Image.asset(
+                                    "assets/images/temperature.png",
+                                    height: 34,
+                                    width: 34,
+                                  ),
+                                  Text('Min :  ',
+                                      style: TextStyle(
+                                          color: Colors.grey[200], fontSize: 15)),
+                                  Text(
+                                      '${(widget.weather?['main']['temp_min']).toInt()}°',
+                                      style: TextStyle(
+                                          color: Colors.grey[200], fontSize: 15)),
+                                  Text('      Feels like ',
+                                      style: TextStyle(
+                                          color: Colors.grey[200], fontSize: 15)),
+                                  Text(
+                                      '${(widget.weather?['main']['feels_like']).toInt()}°',
+                                      style: TextStyle(
+                                          color: Colors.grey[200], fontSize: 15)),
+                                ],
+                              ),
                             ),
                           ),
                         ],
