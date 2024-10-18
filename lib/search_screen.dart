@@ -18,8 +18,8 @@ class _SearchScreen extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //Change icon depending on the weather description
-    final String desp = widget.weather?['weather'][0]['description'];
+    // Change icon depending on the weather description
+    final String desp = widget.weather?['weather'][0]['description'] ?? '';
     late String icon;
     if (desp.contains('clouds')) {
       icon = 'clouds';
@@ -34,7 +34,14 @@ class _SearchScreen extends State<SearchScreen> {
       icon = 'wind';
     } else if (desp.contains('snow')) {
       icon = 'snow';
+    } else if (desp.contains('fog')) {
+      icon = 'fog';
+    } else if (desp.contains('mist')) {
+      icon = 'mist';
+    } else {
+      icon = 'unknownWeather';
     }
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
