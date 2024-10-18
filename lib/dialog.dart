@@ -11,7 +11,7 @@ class WeatherDialog extends StatelessWidget {
   final String icon;
 
   const WeatherDialog({
-    Key? key,
+    super.key,
     required this.temp,
     required this.tempMax,
     required this.tempMin,
@@ -19,7 +19,7 @@ class WeatherDialog extends StatelessWidget {
     required this.formattedDate,
     required this.weatherDescription,
     required this.icon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -185,7 +185,7 @@ class _MyHomePageState extends State<WeatherScreen> {
                             right: 56,
                             child: Text(
                               // "${(widget.weather['main']['temp']).toInt()}",
-                              "$_result",
+                              _result,
                               style: const TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -195,8 +195,8 @@ class _MyHomePageState extends State<WeatherScreen> {
                           top: 35,
                           right: 34,
                           child:_isCelsius==false ?
-                          Text('°C',style:TextStyle(color: Colors.white, fontSize: 20)):
-                          Text('°F',style:TextStyle(color: Colors.white, fontSize: 20)),),
+                          const Text('°C',style:TextStyle(color: Colors.white, fontSize: 20)):
+                          const Text('°F',style:TextStyle(color: Colors.white, fontSize: 20)),),
 
                         Positioned(
                           top: 105,
