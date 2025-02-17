@@ -1,4 +1,4 @@
-![نسخة من Blue Purple Modern Gradient Mobile App Development Facebook Cover](https://github.com/user-attachments/assets/2aec9056-23ea-43b1-9661-fae2fb8e25f6)# 🌦 Weather Forecasting App
+# 🌦 Weather Forecasting App
 
 ## Overview
 The **Weather Forecasting App** provides accurate and real-time weather updates, helping users plan their activities efficiently. With a clean UI and essential weather details, this app ensures a seamless experience.
@@ -16,7 +16,7 @@ The **Weather Forecasting App** provides accurate and real-time weather updates,
 - **Weather API** – Fetches real-time weather data.
 
 ## Screenshots
-![Weather Forecasting App](نسخة من Blue Purple Modern Gradient Mobile App Development Facebook Cover.png)
+![نسخة من Blue Purple Modern Gradient Mobile App Development Facebook Cover](https://github.com/user-attachments/assets/c84d49c2-c30f-4439-8723-334d16ae0d88)
 
 ## Installation
 ### Prerequisites
