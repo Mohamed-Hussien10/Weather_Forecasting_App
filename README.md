@@ -43,9 +43,9 @@ The **Weather Forecasting App** provides accurate and real-time weather updates,
    ```
 
 ## Future Enhancements
-- 🔹 **AI-powered Weather Predictions**
-- 🔹 **Push Notifications for Severe Weather Alerts**
-- 🔹 **Offline Mode for Last Synced Data**
+-  **AI-powered Weather Predictions**
+-  **Push Notifications for Severe Weather Alerts**
+-  **Offline Mode for Last Synced Data**
 
 ## Contributing
 Contributions are welcome! Please follow these steps:
