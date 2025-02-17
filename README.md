@@ -1,16 +1,62 @@
-# weather_forecasting
+![نسخة من Blue Purple Modern Gradient Mobile App Development Facebook Cover](https://github.com/user-attachments/assets/2aec9056-23ea-43b1-9661-fae2fb8e25f6)# 🌦 Weather Forecasting App
 
-A new Flutter project.
+## Overview
+The **Weather Forecasting App** provides accurate and real-time weather updates, helping users plan their activities efficiently. With a clean UI and essential weather details, this app ensures a seamless experience.
 
-## Getting Started
+## Features
+- ✅ **Real-time Weather Updates** – Get the latest weather data instantly.
+- ✅ **City-based Search** – Search weather conditions by city name.
+- ✅ **Temperature & Humidity Info** – View detailed temperature, humidity, and wind speed.
+- ✅ **Weather Forecasting** – Check upcoming weather predictions.
+- ✅ **User-friendly UI** – Simple and intuitive design.
 
-This project is a starting point for a Flutter application.
+## Tech Stack
+- **Flutter** – Cross-platform mobile development.
+- **Dart** – Core programming language.
+- **Weather API** – Fetches real-time weather data.
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
+![Weather Forecasting App](نسخة من Blue Purple Modern Gradient Mobile App Development Facebook Cover.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Installation
+### Prerequisites
+- Install [Flutter](https://flutter.dev/docs/get-started/install)
+- Ensure you have a suitable IDE (VS Code/Android Studio)
+- Set up a working emulator or a real device
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Steps to Install
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/weather-forecasting-app.git
+   ```
+2. Navigate to the project folder:
+   ```sh
+   cd weather-forecasting-app
+   ```
+3. Install dependencies:
+   ```sh
+   flutter pub get
+   ```
+4. Run the app:
+   ```sh
+   flutter run
+   ```
+
+## Future Enhancements
+- 🔹 **AI-powered Weather Predictions**
+- 🔹 **Push Notifications for Severe Weather Alerts**
+- 🔹 **Offline Mode for Last Synced Data**
+
+## Contributing
+Contributions are welcome! Please follow these steps:
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Commit your changes (`git commit -m 'Add new feature'`)
+4. Push to the branch (`git push origin feature-branch`)
+5. Open a Pull Request
+
+## Contact
+For inquiries or collaborations, feel free to connect with me on:
+- 💼 [LinkedIn](https://www.linkedin.com/in/mohamed-hussien7)
+- 📧 Email: mohamedhu350@gmail.com
+
